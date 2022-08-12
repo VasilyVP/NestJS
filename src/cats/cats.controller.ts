@@ -24,8 +24,6 @@ export class CatsController {
 
   @Get()
   async findAll() {
-    //const users = this.usersService.usersAll();
-
     return this.catsService.findAll();
   }
 
