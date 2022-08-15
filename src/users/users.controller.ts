@@ -19,13 +19,13 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
-  async usersSearch(@Query() { search }: SearchUserDto) {
+  async usersSearch(@Query() { search = '' }: SearchUserDto) {
     return this.usersService.user({
       search,
     });
   }
 
-  @Get('/all/:param')
+  @Get('/all') // /:param
   async usersAll(/* @Param('param', ParseIntPipe) param: number */) {
     //console.log('Param: ', param);
     //throw new UnauthorizedException('Text'); //HttpException('Forbidden resource', HttpStatus.FORBIDDEN);
@@ -35,6 +35,6 @@ export class UsersController {
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
-    await this.usersService.create(createUserDto);
+    return this.usersService.create(createUserDto);
   }
 }

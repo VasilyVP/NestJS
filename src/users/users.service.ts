@@ -1,23 +1,35 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './interfaces/user.interface';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Like, Repository } from 'typeorm';
+import { User as IUser } from './interfaces/user.interface';
+import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
-  users: User[] = [];
+  constructor(
+    @InjectRepository(User)
+    private users: Repository<User>,
+  ) {}
 
   usersAll() {
-    return this.users;
+    return this.users.find();
   }
 
   async user({ search }: { search: string }) {
-    return this.users.filter(
-      (user) => user.email.includes(search) || user.userName.includes(search),
-    );
+    return this.users.find({
+      where: [
+        { firstName: Like(`%${search}%`) },
+        { lastName: Like(`%${search}%`) },
+      ],
+    });
   }
 
-  async create(user: User) {
-    this.users.push(user);
+  create(userData: IUser) {
+    const user = new User();
 
-    return user;
+    user.firstName = userData.firstName;
+    user.lastName = userData.lastName;
+
+    return user.save();
   }
 }

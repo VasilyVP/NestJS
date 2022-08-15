@@ -10,7 +10,7 @@ import {
   //Req,
   //Res,
 } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
+//import { UsersService } from 'src/users/users.service';
 import { CatsService } from './cats.service';
 //import { Request } from 'express';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -19,7 +19,7 @@ import { CreateCatDto } from './dto/create-cat.dto';
 export class CatsController {
   constructor(
     private catsService: CatsService,
-    private usersService: UsersService,
+    //private usersService: UsersService,
   ) {}
 
   @Get()

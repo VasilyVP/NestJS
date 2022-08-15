@@ -13,11 +13,6 @@ describe('CatsController', () => {
   //let catsService: CatsService;
   //let usersService: UsersService;
 
-  /* const user = {
-    userName: 'Vasily',
-    email: 'vvp@gmail.com',
-  }; */
-
   const cat: CreateCatDto = {
     name: 'Murzik',
     age: 4,
@@ -40,12 +35,12 @@ describe('CatsController', () => {
           return { findAll: jest.fn().mockResolvedValue([cat]) };
         }
 
-        if (typeof token === 'function') {
+        /* if (typeof token === 'function') {
           const mockMetadata = moduleMocker.getMetadata(token);
           const Mock = moduleMocker.generateFromMetadata(mockMetadata);
 
           return new Mock();
-        }
+        } */
       })
       .compile();
 
@@ -55,11 +50,11 @@ describe('CatsController', () => {
     //catsController.create(cat);
   });
 
-  describe('findAll', () => {
-    it('should be defined', () => {
-      expect(catsController).toBeDefined();
-    });
+  it('should be defined', () => {
+    expect(catsController).toBeDefined();
+  });
 
+  describe('findAll', () => {
     it('should return an array of cats', async () => {
       const result = [cat];
 
