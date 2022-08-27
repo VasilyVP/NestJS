@@ -1,0 +1,6 @@
+type Store {
+    id: Int!
+    name: String!
+    #location: String!
+    products: [Product]
+}
