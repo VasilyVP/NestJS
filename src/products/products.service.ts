@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { StoresService } from './stores/stores.service';
+import { StoresService } from '../stores/stores.service';
 
 const productsData = [
   {

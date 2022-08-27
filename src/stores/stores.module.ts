@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../products/products.service';
 import { StoresResolver } from './stores.resolver';
 import { StoresService } from './stores.service';
 
